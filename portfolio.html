@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>W.V.J. Fernando - Portfolio</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 40px;
+            margin-bottom: 30px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            animation: shimmer 3s infinite;
+        }
+
+        @keyframes shimmer {
+            0% { left: -100%; }
+            100% { left: 100%; }
+        }
+
+        .profile-image {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            margin: 0 auto 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 60px;
+            color: white;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease;
+        }
+
+        .profile-image:hover {
+            transform: scale(1.05);
+        }
+
+        .name {
+            font-size: 3rem;
+            font-weight: 700;
+            color: #2c3e50;
+            margin-bottom: 10px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .title {
+            font-size: 1.5rem;
+            color: #7f8c8d;
+            margin-bottom: 20px;
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+            margin-top: 20px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: #555;
+            transition: color 0.3s ease;
+        }
+
+        .contact-item:hover {
+            color: #667eea;
+        }
+
+        .section {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 40px;
+            margin-bottom: 30px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .section:hover {
+            transform: translateY(-5px);
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #2c3e50;
+            margin-bottom: 30px;
+            text-align: center;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            border-radius: 2px;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .skill-category {
+            background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+        }
+
+        .skill-category:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .skill-category h4 {
+            color: #667eea;
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .skill-tag {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 25px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .skill-tag:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+        }
+
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+
+        .project-card {
+            background: linear-gradient(135deg, #f8f9fa, #fff);
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .project-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+        }
+
+        .project-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+        }
+
+        .project-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #2c3e50;
+            margin-bottom: 15px;
+        }
+
+        .project-description {
+            color: #555;
+            margin-bottom: 20px;
+            line-height: 1.7;
+        }
+
+        .project-tech {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 20px;
+        }
+
+        .tech-tag {
+            background: rgba(102, 126, 234, 0.1);
+            color: #667eea;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+
+        .project-links {
+            display: flex;
+            gap: 15px;
+        }
+
+        .project-link {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .project-link:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.4);
+        }
+
+        .summary {
+            font-size: 1.2rem;
+            color: #555;
+            text-align: center;
+            line-height: 1.8;
+        }
+
+        .floating-elements {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .floating-circle {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .floating-circle:nth-child(1) {
+            width: 80px;
+            height: 80px;
+            top: 20%;
+            left: 10%;
+            animation-delay: 0s;
+        }
+
+        .floating-circle:nth-child(2) {
+            width: 120px;
+            height: 120px;
+            top: 60%;
+            right: 10%;
+            animation-delay: 2s;
+        }
+
+        .floating-circle:nth-child(3) {
+            width: 60px;
+            height: 60px;
+            bottom: 20%;
+            left: 20%;
+            animation-delay: 4s;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 10px;
+            }
+            
+            .header {
+                padding: 30px 20px;
+            }
+            
+            .name {
+                font-size: 2.5rem;
+            }
+            
+            .contact-info {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .section {
+                padding: 30px 20px;
+            }
+            
+            .project-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="floating-elements">
+        <div class="floating-circle"></div>
+        <div class="floating-circle"></div>
+        <div class="floating-circle"></div>
+    </div>
+
+    <div class="container">
+        <!-- Header Section -->
+        <div class="header">
+            <div class="profile-image">
+                👤
+            </div>
+            <h1 class="name">W.V.J. Fernando</h1>
+            <p class="title">Software Engineer | IT Student</p>
+            <div class="contact-info">
+                <div class="contact-item">
+                    📧 [your.email@example.com]
+                </div>
+                <div class="contact-item">
+                    📱 [+94 XX XXX XXXX]
+                </div>
+                <div class="contact-item">
+                    🌐 [GitHub Profile]
+                </div>
+                <div class="contact-item">
+                    💼 [LinkedIn Profile]
+                </div>
+            </div>
+        </div>
+
+        <!-- Professional Summary -->
+        <div class="section">
+            <h2 class="section-title">Professional Summary</h2>
+            <p class="summary">
+                Passionate Software Engineer pursuing Higher National Diploma in IT with a strong foundation in programming and software development. Eager to apply academic knowledge and technical skills in a dynamic internship environment. Committed to learning, growing, and contributing to innovative software solutions while gaining real-world industry experience.
+            </p>
+        </div>
+
+        <!-- Skills Section -->
+        <div class="section">
+            <h2 class="section-title">Skills & Expertise</h2>
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <h4>Programming Languages</h4>
+                    <div class="skill-tags">
+                        <span class="skill-tag">HTML</span>
+                        <span class="skill-tag">PHP</span>
+                        <span class="skill-tag">C#</span>
+                        <span class="skill-tag">CSS</span>
+                        <span class="skill-tag">Java</span>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h4>Database</h4>
+                    <div class="skill-tags">
+                        <span class="skill-tag">MySQL</span>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h4>Design & Development Tools</h4>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Canva</span>
+                        <span class="skill-tag">Figma</span>
+                        <span class="skill-tag">Photoshop</span>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h4>Core Competencies</h4>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Full Stack Development</span>
+                        <span class="skill-tag">UI/UX Design</span>
+                        <span class="skill-tag">Problem Solving</span>
+                        <span class="skill-tag">Creative Design</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Projects Section -->
+        <div class="section">
+            <h2 class="section-title">Academic Projects</h2>
+            <div class="project-grid">
+                <div class="project-card">
+                    <h3 class="project-title">Event Booking System</h3>
+                    <p class="project-description">
+                        A comprehensive web-based event booking platform developed as an individual project. The system allows users to browse, book, and manage events with features including user authentication, event catalog, booking management, and admin dashboard. Demonstrates full-stack development skills with dynamic content management.
+                    </p>
+                    <div class="project-tech">
+                        <span class="tech-tag">PHP</span>
+                        <span class="tech-tag">MySQL</span>
+                        <span class="tech-tag">HTML</span>
+                        <span class="tech-tag">CSS</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="#" class="project-link">🔗 View Project</a>
+                        <a href="#" class="project-link">📁 Source Code</a>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <h3 class="project-title">Library Management System</h3>
+                    <p class="project-description">
+                        Collaborative group project developed during first year to digitize library operations. The system manages book inventory, member registration, borrowing/returning processes, and generates reports. Showcases teamwork, database design, and systematic approach to solving real-world problems.
+                    </p>
+                    <div class="project-tech">
+                        <span class="tech-tag">Database Design</span>
+                        <span class="tech-tag">Team Collaboration</span>
+                        <span class="tech-tag">System Analysis</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="#" class="project-link">📄 View Documentation</a>
+                        <a href="#" class="project-link">🔗 Demo</a>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <h3 class="project-title">Student Result Management System</h3>
+                    <p class="project-description">
+                        Individual project utilizing Microsoft Access to create a comprehensive student academic record management system. Features include student registration, grade entry, report generation, and performance analytics. Demonstrates database management skills and attention to data integrity.
+                    </p>
+                    <div class="project-tech">
+                        <span class="tech-tag">Microsoft Access</span>
+                        <span class="tech-tag">Database Management</span>
+                        <span class="tech-tag">Report Generation</span>
+                        <span class="tech-tag">Data Analysis</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="#" class="project-link">📊 View Reports</a>
+                        <a href="#" class="project-link">📁 Download</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Proposals Section -->
+        <div class="section">
+            <h2 class="section-title">Key Proposals & Solutions</h2>
+            <div class="project-grid">
+                <div class="project-card">
+                    <h3 class="project-title">Event Booking System Proposal</h3>
+                    <p class="project-description">
+                        Comprehensive project proposal outlining the development of a web-based event booking platform. Includes system requirements analysis, technical architecture design, database schema planning, and implementation timeline. Demonstrates project planning and technical documentation skills.
+                    </p>
+                    <div class="project-tech">
+                        <span class="tech-tag">System Analysis</span>
+                        <span class="tech-tag">Technical Documentation</span>
+                        <span class="tech-tag">Project Planning</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="#" class="project-link">📄 View Proposal</a>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <h3 class="project-title">Academic System Solutions</h3>
+                    <p class="project-description">
+                        Collection of proposals for digitizing academic processes including library management and student result systems. Focus on identifying inefficiencies in manual processes and proposing automated solutions to improve accuracy and efficiency.
+                    </p>
+                    <div class="project-tech">
+                        <span class="tech-tag">Process Analysis</span>
+                        <span class="tech-tag">Solution Design</span>
+                        <span class="tech-tag">Academic Systems</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="#" class="project-link">📄 View Solutions</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Experience Section -->
+        <div class="section">
+            <h2 class="section-title">Academic Experience</h2>
+            <div class="project-grid">
+                <div class="project-card">
+                    <h3 class="project-title">HND IT Student - Software Engineering Track</h3>
+                    <p class="project-description">
+                        <strong>Current - 2nd Year</strong><br>
+                        Pursuing Higher National Diploma in Information Technology with specialization in Software Engineering. Completed multiple individual and group projects demonstrating full-stack development capabilities, database management, and system analysis skills.
+                    </p>
+                </div>
+
+                <div class="project-card">
+                    <h3 class="project-title">Academic Project Leader</h3>
+                    <p class="project-description">
+                        <strong>Various Projects</strong><br>
+                        Led and participated in multiple academic projects from requirements gathering to implementation. Demonstrated ability to work independently on complex systems while also contributing effectively to team-based initiatives.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Education & Certifications -->
+        <div class="section">
+            <h2 class="section-title">Education & Seeking Opportunities</h2>
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <h4>Education</h4>
+                    <p><strong>Higher National Diploma in IT</strong></p>
+                    <p>Currently Pursuing | Focus: Software Engineering & Development</p>
+                </div>
+                <div class="skill-category">
+                    <h4>Seeking Opportunities</h4>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Software Development Internship</span>
+                        <span class="skill-tag">IT Support Role</span>
+                        <span class="skill-tag">Junior Developer Position</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
